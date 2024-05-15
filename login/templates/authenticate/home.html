@@ -1,74 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Decor</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #fff;
-            color: #333;
-        }
-        header {
-            background: #6C7A89;
-            padding: 10px 20px;
-            text-align: center;
-            color: white;
-            font-size: 24px;
-        }
-        nav {
-            background: #bdc3c7;
-            padding: 10px 20px;
-        }
-        nav a {
-            text-decoration: none;
-            color: white;
-            margin-right: 10px;
-            font-size: 18px;
-        }
-        .main-content {
-            padding: 20px;
-            text-align: center;
-        }
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        @media (max-width: 600px) {
-            .main-content, header, nav {
-                text-align: center;
-            }
-            nav a {
-                display: block;
-                margin-bottom: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        Home Decor
-    </header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="main-content">
-        <h1>Welcome to Our Home Decor</h1>
-        <p>Explore our wide range of home decoration items and interior design solutions, crafted to enhance your living space.</p>
-    </div>
-    <footer class="footer">
-        &copy; 2024 Home Decor. All rights reserved.
-    </footer>
-</body>
-</html>
+<h1>Post</h1>
+
+<ul>
+{% for post in object list %}
+<li> {{ Post.title }} - {{ Post.author }} - {{ Post.body }} </li>
+
+{% endfor %}
+</ul>
