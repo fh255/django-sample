@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block title %} Create a new Blog Post {% endblock %}
 {% block content %}
+
+{% if user.is_authenticated %}
 <h1>Add Posts</h1>
 <br>
 <br>
@@ -11,6 +13,8 @@
         <button type="submit" class="btn btn-secondary">Post</button>
     </form>
 </div>
-
+{% else %}
+You're not allowed here!
+{% endif %}
 
 {% endblock %}
