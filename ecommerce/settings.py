@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_tvlp=k5wsmf!zz!(4elif5*+ww#f#(jj7-c2$o&g#k3&&yvy)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-fh255-djangosample-uhn7hvv6ta7.ws-eu111.gitpod.io']
+ALLOWED_HOSTS = ['8000-fh255-djangosample-uhn7hvv6ta7.ws-eu114.gitpod.io']
 
 
 # Application definition
