@@ -4,25 +4,37 @@ from django.contrib import messages
 from django.views.generic import ListView, DetailView , CreateView, UpdateView, DeleteView
 from .models import Post, Category
 from .forms import PostForm, EditForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 
 
 def LikeView(request, pk):
    post = get_object_or_404(Post, id=request.POST.get('post_id'))
-
-
+   post.likes.add(request.user)
+   return HttpResponseRedirect(reverse('article', args=[str(pk)]))
 
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
     ordering = ['-post_date']
-    # ordering = ['-id']
+    
 
     def get_context_data(self, *args, **kwargs):
-     cat_menu = Category.objects.all()
-     context = super(HomeView,self).get_context_data(*args, **kwargs)
-     context["cat_menu"] = cat_menu
-     return context
+        cat_menu = Category.objects.all()
+        context = super(HomeView,self).get_context_data(*args, **kwargs)
+        # stuff =get_object_or_404(Post, id=self.kwargs['pk'])
+        # total_likes = stuff.total_likes()
+        context["cat_menu"] = cat_menu
+        # context["total_likes"] = total_likes
+        # Assign total_likes based on the existence of 'pk' in self.kwargs
+        context["total_likes"] = get_object_or_404(Post, id=self.kwargs['pk']).total_likes() if 'pk' in self.kwargs else None
+        return context
+
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     # You can access the queryset here to perform any filtering or customization
+    #     # For now, let's just return the queryset as is
+    #     return queryset
 
 def CategoryListView(request):
     cat_menu_list = Category.objects.all()
