@@ -1,10 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate
 from django.contrib import messages
 from django.views.generic import ListView, DetailView , CreateView, UpdateView, DeleteView
 from .models import Post, Category
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
+
+
+def LikeView(request, pk):
+   post = get_object_or_404(Post, id=request.POST.get('post_id'))
+
 
 
 class HomeView(ListView):
